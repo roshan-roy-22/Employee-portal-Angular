@@ -1,0 +1,26 @@
+<div style="min-height: 90vh;" class="w-100 d-flex justify-content-center align-items-center">
+    <div class="w-75 p-3 shadow-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="https://sales.webtel.in/images/Login-page-character1.png" alt="">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="my-3">Login Form</h2>
+                
+                <form #loginForm="ngForm" (ngSubmit)="login()"> 
+                    <div class="mb-3">
+                        <input name="email" [(ngModel)]="email" #userEmailInput="ngModel" email class="form-control" type="email" placeholder="Email" required>
+                    </div>
+                    <p *ngIf="userEmailInput.invalid && userEmailInput.touched" class="text-warning">Invalid Email</p>
+                    <div class="mb-3">
+                        <input name="password" class="form-control" #userPasswordInput="ngModel" pattern="[a-zA-Z0-9]*" [(ngModel)]="password" type="password" placeholder="Password" minlength="3" required>
+                    </div>
+                    <p *ngIf="userPasswordInput.invalid && userPasswordInput.touched" class="text-warning">Invalid password</p>
+                    <div class="mb-3">
+                        <button [disabled]="loginForm.invalid" class="btn btn-primary" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

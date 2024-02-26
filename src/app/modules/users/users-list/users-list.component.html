@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="row">
+    <div
+      style="height: 92vh; width: fit-content; background-color: #c7c8cc"
+      class="col-lg-2 d-flex flex-column p-5 shadow"
+    >
+      <a
+        style="text-decoration: none; color: black"
+        class="fw-bolder mt-2"
+        routerLink="/dashboard"
+        >Home</a
+      >
+      <hr />
+      <a
+        style="text-decoration: none; color: black"
+        class="fw-bolder mt-2"
+        routerLink="/users"
+        >Users</a
+      >
+    </div>
+    <div class="col-lg-10">
+      <div class="d-flex justify-content-between w-100 mt-5">
+        <h4>All users list</h4>
+        <a class="btn btn-success" routerLink="/users/add"
+          >Add<i class="fa-solid fa-plus ms-2"></i
+        ></a>
+      </div>
+      <div class="container-fluid">
+        <div class="row ">
+          <div class="col p3">
+            <table class="table shadow mt-5 rounded">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let user of allUsers; let i = index"
+                  [hidden]="!user.empId"
+                >
+                  <td>{{ i }}</td>
+                  <td>{{ user.empId }}</td>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>
+                    <span
+                      [ngClass]="
+                        user.status == '1' ? 'text-success fw-bolder' : 'text-danger fw-bolder'
+                      "
+                    >
+                      {{ user.status == "1" ? "Active" : "Inactive" }}
+                    </span>
+                  </td>
+
+                  <td>
+                    <a routerLink="/users/edit/{{user.id}}" class="btn"
+                      ><i class="fa-solid fa-pen"></i
+                    ></a>
+                    <button class="btn">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
