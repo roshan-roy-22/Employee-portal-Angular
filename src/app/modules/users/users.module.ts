@@ -8,20 +8,23 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { SearchPipe } from './pipes/search.pipe';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
     UsersComponent,
     UsersListComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
     UsersRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ]
 })
 export class UsersModule { }
