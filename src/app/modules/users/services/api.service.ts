@@ -7,7 +7,7 @@ import { UserSchema } from '../Models/userSchema';
 })
 export class ApiService {
 
-  SERVER_URL="http://localhost:3000"
+  SERVER_URL="https://employee-management-server-angular-2.onrender.com"
   constructor(private http:HttpClient) { }
 
   addUserAPI(user:UserSchema){

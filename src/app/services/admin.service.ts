@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AdminService {
 
-SERVER_URL:string="http://localhost:3000"
+SERVER_URL:string="https://employee-management-server-angular-2.onrender.com"
 
   constructor(private http:HttpClient) { }
 
@@ -14,4 +14,13 @@ SERVER_URL:string="http://localhost:3000"
     return this.http.get(`${this.SERVER_URL}/users/1`)
   }
 
+  updateAdmin(admin:any){
+    return this.http.put(`${this.SERVER_URL}/users/1`,admin)
+  }
+
+  isLoggedIn(){
+   return !! sessionStorage.getItem("adminDetails")
+  }
 }
+
+

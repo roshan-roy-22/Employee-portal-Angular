@@ -1,14 +1,70 @@
-<div class="container-fluid ">
-    <div class="row">
-        <div style="height: 92vh; width: fit-content;" class="col-lg-2 bg-dark d-flex flex-column p-3 ">
-            <a style="text-decoration: none;color: white" class="fw-bolder mb-3 " routerLink="/dashobard" >HOME</a>
-            <a style="text-decoration: none;color: white" class="fw-bolder mb-3 " routerLink="/users" >USERS</a>
-            <button class="bg-black text-white p-1  mt-auto  fw-bolder ">
-                Logout
-            </button>
-        </div>
-        <div class="col-lg-10">
-            <h1>Welcome Admin!</h1>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    <div
+      *ngIf="sideBarStatus"
+      style="height: 92vh; width: auto"
+      class="col-lg-2 bg-dark d-flex flex-column p-3"
+    >
+      <a
+        style="text-decoration: none; color: white"
+        class="fw-bolder mb-3"
+        routerLink="/dashobard"
+        >HOME</a
+      >
+      <a
+        style="text-decoration: none; color: white"
+        class="fw-bolder mb-3"
+        routerLink="/users"
+        >USERS</a
+      >
+      <button (click)="logout()" class="bg-black text-white p-1 mt-auto fw-bolder">Logout</button>
     </div>
+    <div class="col">
+      <div class="row p-1 w-100">
+        <div class="col-lg-8">
+          <div
+            style="
+              height: 180px;
+              background-size: cover;
+              background-image: url('https://i.pinimg.com/474x/59/dc/7f/59dc7fb4b041f89c1454f08ab42d7f26.jpg');
+            "
+            class="banner rounded p-3 d-flex align-items-center"
+          >
+            <h1 class="fw-bolder">
+              <i
+                (click)="menuBtnClicked()"
+                style="cursor: pointer"
+                class="fa-solid fa-bars me-3"
+              ></i>
+              Welcome {{adminName}}!!
+            </h1>
+          </div>
+          <div class="row mt-3 ms-1">
+            <div class="col-lg-5 rounded">
+              <!-- calender -->
+              <app-calender></app-calender>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6 rounded">
+              <app-chart></app-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div style="height: 400px" class="border rounded p-2 edit-admin">
+            <app-update-admin (onAdminChange)="getUpdatedAdmin($event)"></app-update-admin>
+          </div>
+          <div
+            style="
+              height: 180px;
+              background-image: url('https://i.pinimg.com/474x/59/dc/7f/59dc7fb4b041f89c1454f08ab42d7f26.jpg');
+            "
+            class="mt-2 rounded d-flex align-items-center justify-content-center"
+          >
+            <h1><i class="fa-solid fa-people-group me-2 "></i>Employee:{{userCount}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
